@@ -1,2 +1,4 @@
 # oUF_Drak_Config
-oUF Layout for use as a HUD - Config Panel
+oUF_Drak Config Panel for World of Warcraft
+
+**Required:** oUF_Drak
