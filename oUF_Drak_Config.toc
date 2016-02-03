@@ -1,0 +1,37 @@
+## Interface: 60000
+## Version: 1.0
+## X-Curse-Packaged-Version: 1.0
+## X-Curse-Project-Name: oUF_Drak
+## X-Curse-Project-ID: ouf-Drak
+## X-Curse-Repository-ID: wow/ouf-Drak/mainline
+
+## Title: oUF: Drak Options
+## Notes: Configuration UI for oUF Drak.
+## Notes-deDE: Konfigurationsinterface für oUF Drak.
+## Notes-esES: Interfaz de configuración para oUF Drak.
+## Notes-esMX: Interfaz de configuración para oUF Drak.
+## Notes-frFR: Interface de configuration pour oUF Drak.
+## Notes-ptBR: Interface de configuração para oUF Drak.
+
+## Author: Drak
+## X-Email: drak@derpydo.com
+## X-Copyright: Copyright (c) 2008-2014 Drak. All rights reserved.
+## X-Website: https://github.com/SnarkyClark/oUF_Drak_Config
+
+## Dependencies: oUF_Drak
+## OptionalDependencies: LibAboutPanel, DrakConfigWidgets
+## LoadOnDemand: 1
+
+Libs\LibAboutPanel\LibAboutPanel.lua
+Libs\DrakConfig-ColorPicker\DrakConfig-ColorPicker.lua
+Libs\DrakConfig-Checkbox\DrakConfig-Checkbox.lua
+Libs\DrakConfig-Dropdown\DrakConfig-Dropdown.lua
+Libs\DrakConfig-Header\DrakConfig-Header.lua
+Libs\DrakConfig-OptionsPanel\DrakConfig-OptionsPanel.lua
+Libs\DrakConfig-Slider\DrakConfig-Slider.lua
+
+Localization.lua
+
+Main.lua
+Auras.lua
+Units.lua
