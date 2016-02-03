@@ -2,7 +2,7 @@
 	DrakConfig-Dropdown
 	Simple scrolling dropdown widget generator. Requires LibStub.
 	Based on tekKonfig-Dropdown by Tekkub and OmniCC_Options by Tuller.
-	https://github.com/SnarkyClark/oUF_Drak_Config
+	https://github.com/Drak1814/oUF_Drak_Config
 
 ----------------------------------------------------------------------]]
 

@@ -16,7 +16,7 @@
 ## Author: Drak
 ## X-Email: drak@derpydo.com
 ## X-Copyright: Copyright (c) 2008-2014 Drak. All rights reserved.
-## X-Website: https://github.com/SnarkyClark/oUF_Drak_Config
+## X-Website: http://www.wowinterface.com/downloads/info23780-oUFDrak.html
 
 ## Dependencies: oUF_Drak
 ## OptionalDependencies: LibAboutPanel, DrakConfigWidgets

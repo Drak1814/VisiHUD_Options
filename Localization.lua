@@ -2,7 +2,7 @@
 	oUF_Drak
 	oUF-based Combat HUD for PvE.
 	Copyright (c) 2016 Drak <drak@derpydo.com>. All rights reserved.
-	https://github.com/SnarkyClark/oUF_Drak_Config
+	https://github.com/Drak1814/oUF_Drak_Config
 ----------------------------------------------------------------------]]
 
 local _, private = ...

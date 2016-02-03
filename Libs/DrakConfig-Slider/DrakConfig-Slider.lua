@@ -2,7 +2,7 @@
 	DrakConfig-Slider
 	Simple slider widget generator. Requires LibStub.
 	Based on tekKonfig-Slider and AceGUI-3.0-Slider.
-	https://github.com/SnarkyClark/oUF_Drak_Config
+	https://github.com/Drak1814/oUF_Drak_Config
 
 ----------------------------------------------------------------------]]
 

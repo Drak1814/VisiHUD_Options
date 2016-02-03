@@ -2,7 +2,7 @@
 	DrakConfig-Checkbox
 	Simple checkbox widget generator. Requires LibStub.
 	Originally based on tekKonfig-Checkbox by Tekkub.
-	https://github.com/SnarkyClark/oUF_Drak_Config
+	https://github.com/Drak1814/oUF_Drak_Config
 
 ----------------------------------------------------------------------]]
 

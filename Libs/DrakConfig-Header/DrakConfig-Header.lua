@@ -1,7 +1,7 @@
 --[[--------------------------------------------------------------------
 	DrakConfig-Header
 	Simple options panel header generator. Requires LibStub.
-	https://github.com/SnarkyClark/oUF_Drak_Config
+	https://github.com/Drak1814/oUF_Drak_Config
 ----------------------------------------------------------------------]]
 
 local MINOR_VERSION = 20160202
