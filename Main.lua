@@ -163,6 +163,7 @@ LibStub("DrakConfig-OptionsPanel"):New(oUFDrakOptions, nil, function(panel)
 	outline:SetPoint("TOPLEFT", font, "BOTTOMLEFT", 0, -12)
 	outline:SetPoint("TOPRIGHT", font, "BOTTOMRIGHT", 0, -12)
 
+	
 	--------------------------------------------------------------------
 
 	local shadow = panel:CreateCheckbox(L.Shadow)
@@ -257,6 +258,15 @@ LibStub("DrakConfig-OptionsPanel"):New(oUFDrakOptions, nil, function(panel)
 		end
 	end
 
+	--------------------------------------------------------------------
+
+	local fastFocus = panel:CreateCheckbox("Fast focus", "Enable shift-click focus")
+	fastFocus:SetPoint("TOPLEFT", threatLevels, "BOTTOMLEFT", 0, -12)
+
+	function fastFocus:OnValueChanged(value)
+		db.fastfocus = value
+	end
+	
 	--------------------------------------------------------------------
 
 	local healthColor
@@ -477,6 +487,7 @@ LibStub("DrakConfig-OptionsPanel"):New(oUFDrakOptions, nil, function(panel)
 		dispelFilter:SetChecked(db.dispelFilter)
 		healFilter:SetChecked(db.ignoreOwnHeals)
 		threatLevels:SetChecked(db.threatLevels)
+		fastFocus:SetChecked(db.fastfocus)
 
 		healthColorMode:SetValue(db.healthColorMode, healthColorModes[db.healthColorMode])
 		healthColor:SetValue(unpack(db.healthColor))
