@@ -25,7 +25,7 @@ local unitType = {
 	targettarget = "single",
 	focus = "single",
 	focustarget = "single"
-]
+}
 
 local function GetUnitConfig(unit, key)
 	local value
