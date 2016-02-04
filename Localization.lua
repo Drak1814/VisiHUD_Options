@@ -111,7 +111,7 @@ L.Width_Desc = "Set the width of this unit's frame relative to the layout's base
 
 ------------------------------------------------------------------------
 -- German
--- Contributors: Drak, Grafotz
+-- Contributors: Phanx, Grafotz
 ------------------------------------------------------------------------
 if LOCALE == "deDE" then
 
@@ -217,7 +217,7 @@ L.Width_Desc = "Die Briete diesem Einheitfenster relativ zur Layoutsbasisbreite 
 return end
 ------------------------------------------------------------------------
 -- Spanish
--- Contributors: Akkorian, Drak
+-- Contributors: Akkorian, Phanx
 ------------------------------------------------------------------------
 if LOCALE == "esES" or locale == "esMX" then
 
@@ -375,7 +375,7 @@ L.TotemBars_Desc = "Affiche des barres de temps pour vos totems au-dessus du cad
 return end
 ------------------------------------------------------------------------
 -- Portuguese
--- Contributors: mgaedke, Drak, Tercioo
+-- Contributors: mgaedke, Phanx, Tercioo
 ------------------------------------------------------------------------
 if LOCALE == "ptBR" then
 

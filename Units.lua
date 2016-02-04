@@ -15,12 +15,7 @@ local unitLabel = {
 	target = L.Unit_Target,
 	targettarget = L.Unit_TargetTarget,
 	focus = L.Unit_Focus,
-	focustarget = L.Unit_FocusTarget,
-	--party = L.Unit_Party,
-	--partypet = L.Unit_PartyPet,
-	--boss = L.Unit_Boss,
-	--arena = L.Unit_Arena,
-	--arenapet = L.Unit_ArenaPet,
+	focustarget = L.Unit_FocusTarget
 }
 
 local unitType = {
@@ -29,13 +24,8 @@ local unitType = {
 	target = "single",
 	targettarget = "single",
 	focus = "single",
-	focustarget = "single",
-	--party = "group",
-	--partypet = "group",
-	--boss = { "boss1", "boss2", "boss3", "boss4" },
-	--arena = { "arena1", "arena2", "arena3", "arena4", "arena5" },
-	--arenapet = { "arenapet1", "arenapet2", "arenapet3", "arenapet4", "arenapet5" },
-}
+	focustarget = "single"
+]
 
 local function GetUnitConfig(unit, key)
 	local value
@@ -134,11 +124,6 @@ LibStub("DrakConfig-OptionsPanel"):New(L.UnitSettings, "oUF Drak", function(pane
 	AddUnit("targettarget")
 	AddUnit("focus")
 	AddUnit("focustarget")
-	--AddUnit("party")
-	--AddUnit("partypet")
-	--AddUnit("boss")
-	--AddUnit("arena")
-	--AddUnit("arenapet")
 	AddUnit("global", L.Unit_Global) -- TODO: localize
 
 	---------------------------------------------------------------------
@@ -207,26 +192,14 @@ LibStub("DrakConfig-OptionsPanel"):New(L.UnitSettings, "oUF Drak", function(pane
 		druidMana.checkedKey = "druidMana"
 		tinsert(classFeatures, druidMana)
 
---		local eclipseBarIcons
-
 		local eclipseBar = panel.CreateCheckbox(unitSettings, L.EclipseBar, L.EclipseBar_Desc)
 		eclipseBar:SetPoint("TOPLEFT", druidMana, "BOTTOMLEFT", 0, -12)
 		function eclipseBar:OnValueChanged(value)
 			oUFDrakConfig.eclipseBar = value
---			eclipseBarIcons:SetEnabled(value)
 		end
 		eclipseBar.checkedKey = "eclipseBar"
 		tinsert(classFeatures, eclipseBar)
---[[
-		eclipseBarIcons = panel.CreateCheckbox(unitSettings, L.EclipseBarIcons, L.EclipseBarIcons_Desc)
-		eclipseBarIcons:SetPoint("TOPLEFT", eclipseBar, "BOTTOMLEFT", 0, -12)
-		function eclipseBarIcons:OnValueChanged(value)
-			oUFDrakConfig.eclipseBarIcons = value
-		end
-		eclipseBarIcons.checkedKey = "eclipseBarIcons"
-		eclipseBarIcons.enabledKey = "eclipseBar"
-		tinsert(classFeatures, eclipseBarIcons)
-]]
+
 	elseif playerClass == "MONK" then
 
 		local staggerBar = panel.CreateCheckbox(unitSettings, L.StaggerBar, L.StaggerBar_Desc)
