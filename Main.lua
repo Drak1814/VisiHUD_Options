@@ -269,6 +269,15 @@ LibStub("DrakConfig-OptionsPanel"):New(oUFDrakOptions, nil, function(panel)
 	
 	--------------------------------------------------------------------
 
+	local expandZoom = panel:CreateCheckbox("Expanded zoom", "Doubles maximum camera zoom out distance")
+	expandZoom:SetPoint("TOPLEFT", fastFocus, "BOTTOMLEFT", 0, -12)
+
+	function expandZoom:OnValueChanged(value)
+		db.expandzoom = value
+	end	
+	
+	--------------------------------------------------------------------
+
 	local healthColor
 
 	local healthColorMode = panel:CreateDropdown(L.HealthColor, L.HealthColor_Desc)
@@ -488,7 +497,8 @@ LibStub("DrakConfig-OptionsPanel"):New(oUFDrakOptions, nil, function(panel)
 		healFilter:SetChecked(db.ignoreOwnHeals)
 		threatLevels:SetChecked(db.threatLevels)
 		fastFocus:SetChecked(db.fastfocus)
-
+		expandZoom:SetChecked(db.expandzoom)
+		
 		healthColorMode:SetValue(db.healthColorMode, healthColorModes[db.healthColorMode])
 		healthColor:SetValue(unpack(db.healthColor))
 		if db.healthColorMode == "CUSTOM" then
