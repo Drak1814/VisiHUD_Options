@@ -123,9 +123,9 @@ function lib.OpenEditbox(self)
 end
 
 
-local fields = { "Version", "Author", "X-Category", "X-License", "X-Email", "Email", "eMail", "X-Website", "X-Credits", "X-Localizations" }
-local haseditbox = { ["X-Website"] = true, ["X-Email"] = true, ["Email"] = true, ["eMail"] = true }
-local fieldLabels = { ["eMail"] = "Email" }
+local fields = { "Version", "Author", "X-Category", "X-License", "X-Website", "X-Credits", "X-Localizations" }
+local haseditbox = { ["X-Website"] = true }
+local fieldLabels = {}
 
 local function HideTooltip() GameTooltip:Hide() end
 
