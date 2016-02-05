@@ -6,8 +6,10 @@
 ----------------------------------------------------------------------]]
 
 
-local _, ns = ...
+local _name, ns = ...
 local L = ns.L
+
+assert(oUFDrak, _name .. " was unable to locate oUF_Drak install.")
 
 --@non-debug@
 -- import other ns and remove global
@@ -522,3 +524,10 @@ LibStub("DrakConfig-OptionsPanel"):New(oUFDrakOptions, nil, function(panel)
 		end
 	end
 end)
+
+------------------------------------------------------------------------
+
+local LAP = LibStub("LibAboutPanel", true)
+if LAP then
+	LAP.new("oUF Drak", "oUF_Drak")
+end

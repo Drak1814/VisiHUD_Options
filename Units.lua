@@ -5,7 +5,7 @@
 	https://github.com/Drak1814/oUF_Drak_Config
 ----------------------------------------------------------------------]]
 
-local _, ns = ...
+local _name, ns = ...
 local _, playerClass = UnitClass("player")
 local L = ns.L
 
@@ -352,9 +352,3 @@ LibStub("DrakConfig-OptionsPanel"):New(L.UnitSettings, "oUF Drak", function(pane
 	end
 end)
 
-------------------------------------------------------------------------
-
-local LAP = LibStub("LibAboutPanel", true)
-if LAP then
-	LAP.new("oUF Drak", "oUF_Drak")
-end
