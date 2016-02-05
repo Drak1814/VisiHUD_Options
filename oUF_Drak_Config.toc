@@ -22,16 +22,5 @@
 ## OptionalDependencies: LibAboutPanel, DrakConfigWidgets
 ## LoadOnDemand: 1
 
-Libs\LibAboutPanel\LibAboutPanel.lua
-Libs\DrakConfig-ColorPicker\DrakConfig-ColorPicker.lua
-Libs\DrakConfig-Checkbox\DrakConfig-Checkbox.lua
-Libs\DrakConfig-Dropdown\DrakConfig-Dropdown.lua
-Libs\DrakConfig-Header\DrakConfig-Header.lua
-Libs\DrakConfig-OptionsPanel\DrakConfig-OptionsPanel.lua
-Libs\DrakConfig-Slider\DrakConfig-Slider.lua
-
-Localization.lua
-
-Main.lua
-Auras.lua
-Units.lua
+Libs\libs.xml
+oUF_Drak_Config.xml

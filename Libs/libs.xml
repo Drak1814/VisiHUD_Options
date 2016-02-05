@@ -1,0 +1,9 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/">
+	<Script file="LibStub\LibStub.lua" />
+	<Script file="DrakConfig-ColorPicker\DrakConfig-ColorPicker.lua" />
+	<Script file="DrakConfig-Checkbox\DrakConfig-Checkbox.lua" />
+	<Script file="DrakConfig-Dropdown\DrakConfig-Dropdown.lua" />
+	<Script file="DrakConfig-Header\DrakConfig-Header.lua" />
+	<Script file="DrakConfig-Slider\DrakConfig-Slider.lua" />
+	<Script file="DrakConfig-OptionsPanel\DrakConfig-OptionsPanel.lua" />
+</Ui>
