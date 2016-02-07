@@ -11,11 +11,9 @@ local L = ns.L
 
 assert(oUFDrak, _name .. " was unable to locate oUF_Drak install.")
 
---@non-debug@
 -- import other ns and remove global
 setmetatable(ns, { __index = oUFDrak })
 oUFDrak = nil
---@end-non-debug@
 
 -- map values to labels
 local outlineWeights = {
@@ -39,6 +37,9 @@ local powerColorModes = {
 ------------------------------------------------------------------------
 
 LibStub("DrakConfig-OptionsPanel"):New(oUFDrakOptions, nil, function(panel)
+	
+	ns.debug(panel.name)
+	
 	local db = oUFDrakConfig
 	local Media = LibStub("LibSharedMedia-3.0")
 
@@ -456,7 +457,7 @@ LibStub("DrakConfig-OptionsPanel"):New(oUFDrakOptions, nil, function(panel)
 
 			local DruidMana = frame.DruidMana
 			if DruidMana then
-				local r, g, b = unpack(oUF.colors.power.MANA)
+				local r, g, b = unpack(dUF.colors.power.MANA)
 				DruidMana.bg.multiplier = value
 				DruidMana:ForceUpdate()
 			end
@@ -473,7 +474,7 @@ LibStub("DrakConfig-OptionsPanel"):New(oUFDrakOptions, nil, function(panel)
 			local Totems = frame.Totems
 			if Totems then
 				for i = 1, #Totems do
-					local r, g, b = unpack(oUF.colors.totems[SHAMAN_TOTEM_PRIORITIES[i]])
+					local r, g, b = unpack(dUF.colors.totems[SHAMAN_TOTEM_PRIORITIES[i]])
 					Totems[i].bg:SetVertexColor(r * value, g * value, b * value)
 					Totems[i].bg.multiplier = value
 				end
@@ -519,8 +520,8 @@ LibStub("DrakConfig-OptionsPanel"):New(oUFDrakOptions, nil, function(panel)
 		end
 		powerBG:SetValue(db.powerBG)
 
-		for i = 1, #oUF.objects do
-			oUF.objects[i]:UpdateAllElements("OptionsRefresh")
+		for i = 1, #dUF.objects do
+			dUF.objects[i]:UpdateAllElements("OptionsRefresh")
 		end
 	end
 end)

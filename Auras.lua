@@ -433,8 +433,8 @@ LibStub("DrakConfig-OptionsPanel").CreateOptionsPanel(L.Auras, "oUF Drak", funct
 			add:Hide()
 		end
 
-		for i = 1, #oUF.objects do
-			oUF.objects[i]:UpdateAllElements("OptionsRefresh")
+		for i = 1, #dUF.objects do
+			dUF.objects[i]:UpdateAllElements("OptionsRefresh")
 		end
 	end
 
