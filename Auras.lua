@@ -130,7 +130,7 @@ LibStub("DrakConfig-OptionsPanel").CreateOptionsPanel(L.Auras, "oUF Drak", funct
 	end)
 	dialog.EditBox = dialogBox
 
-	local dialogButton = CreateFrame("Button", "oUFPCAuraAddButton", dialog, "UIPanelButtonTemplate")
+	local dialogButton = CreateFrame("Button", "oUFDrakAuraAddButton", dialog, "UIPanelButtonTemplate")
 	dialogButton:SetPoint("LEFT", dialogBox, "RIGHT", 12, 0)
 	dialogButton:SetWidth(80)
 	dialogButton:SetText(OKAY)
@@ -159,7 +159,7 @@ LibStub("DrakConfig-OptionsPanel").CreateOptionsPanel(L.Auras, "oUF Drak", funct
 
 	--------------------------------------------------------------------
 
-	local add = CreateFrame("Button", "oUFPCAuraPanelButton", panel, "UIPanelButtonTemplate")
+	local add = CreateFrame("Button", "oUFDrakAuraPanelButton", panel, "UIPanelButtonTemplate")
 	add:SetText("|TInterface\\LFGFRAME\\LFGROLE_BW:0:0:0:0:64:16:48:64:0:16:255:255:153|t " .. L.AddAura)
 	add:SetPoint("TOPRIGHT", title, "BOTTOMRIGHT", 0, -8)
 	add:SetSize(160, 32)
