@@ -1,6 +1,6 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/">
 	<Script file='Localization.lua' />
 	<Script file='Main.lua'/>
-	<Script file='Auras.lua' />
 	<Script file='Units.lua' />
+	<Script file='Auras.lua' />
 </Ui>
