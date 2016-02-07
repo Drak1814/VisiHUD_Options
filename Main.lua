@@ -46,12 +46,19 @@ LibStub("DrakConfig-OptionsPanel"):New(oUFDrakOptions, nil, function(panel)
 	--------------------------------------------------------------------
 
 	local title, notes = panel:CreateHeader(panel.name, L.Options_Desc)
-
+	notes:SetPoint("TOPRIGHT", title, "BOTTOMRIGHT", -200, 0)
+	
 	--------------------------------------------------------------------
+
+	local anchors = CreateFrame("Button", "oUFDrakMoveAnchors", panel, "UIPanelButtonTemplate")
+	anchors:SetPoint("TOPLEFT", notes, "TOPRIGHT", 12, 0)
+	anchors:SetSize(160, 22)
+	anchors:SetText("Toggle Anchors")
+	anchors:SetScript("OnClick", ns.ToggleGrabbers)
 
 	local statusbar = panel:CreateDropdown(L.Texture, nil, Media:List("statusbar"))
 	statusbar:SetPoint("TOPLEFT", notes, "BOTTOMLEFT", 0, -12)
-	statusbar:SetPoint("TOPRIGHT", notes, "BOTTOM", -12, -12)
+	statusbar:SetPoint("TOPRIGHT", notes, "BOTTOMRIGHT", -12, -12)
 
 	local valueBG = statusbar:CreateTexture(nil, "OVERLAY")
 	valueBG:SetPoint("LEFT", statusbar.valueText, -2, 1)
@@ -218,7 +225,7 @@ LibStub("DrakConfig-OptionsPanel"):New(oUFDrakOptions, nil, function(panel)
 	--------------------------------------------------------------------
 
 	local dispelFilter = panel:CreateCheckbox(L.FilterDebuffHighlight, L.FilterDebuffHighlight_Desc)
-	dispelFilter:SetPoint("TOPLEFT", notes, "BOTTOM", 12, -24)
+	dispelFilter:SetPoint("TOPLEFT", notes, "BOTTOMRIGHT", 12, -24)
 
 	function dispelFilter:OnValueChanged(value)
 		db.dispelFilter = value
