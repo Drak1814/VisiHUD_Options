@@ -1,14 +1,14 @@
 --[[--------------------------------------------------------------------
-	DrakConfig-Slider
+	VisiHUD-Slider
 	Simple slider widget generator. Requires LibStub.
 	Based on tekKonfig-Slider and AceGUI-3.0-Slider.
-	https://github.com/Drak1814/oUF_Drak_Config
+	https://github.com/Drak1814/VisiHUD_Options
 
 ----------------------------------------------------------------------]]
 
 local MINOR_VERSION = 20160202
 
-local lib, oldminor = LibStub:NewLibrary("DrakConfig-Slider", MINOR_VERSION)
+local lib, oldminor = LibStub:NewLibrary("VisiHUD-Slider", MINOR_VERSION)
 if not lib then return end
 
 ------------------------------------------------------------------------
@@ -130,7 +130,7 @@ local sliderBG = {
 }
 
 function lib:New(parent, name, tooltipText, minValue, maxValue, valueStep, percent, noEditBox)
-	assert(type(parent) == "table" and type(rawget(parent, 0)) == "userdata", "DrakConfig-Slider: parent must be a frame")
+	assert(type(parent) == "table" and type(rawget(parent, 0)) == "userdata", "VisiHUD-Slider: parent must be a frame")
 	if type(name) ~= "string" then name = nil end
 	if type(tooltipText) ~= "string" then tooltipText = nil end
 	if type(minValue) ~= "number" then minValue = 0 end
@@ -182,8 +182,8 @@ function lib:New(parent, name, tooltipText, minValue, maxValue, valueStep, perce
 	end
 
 	local valueText
-	if not noEditBox and LibStub("DrakConfig-EditBox", true) then
-		valueText = LibStub("DrakConfig-EditBox"):New(frame, nil, tooltipText, 5)
+	if not noEditBox and LibStub("VisiHUD-EditBox", true) then
+		valueText = LibStub("VisiHUD-EditBox"):New(frame, nil, tooltipText, 5)
 		valueText:SetPoint("TOP", slider, "BOTTOM", 0, 13)
 		valueText:SetWidth(100)
 		valueText.editbox:SetFontObject(GameFontHighlightSmall)

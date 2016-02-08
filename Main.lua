@@ -1,19 +1,19 @@
 --[[--------------------------------------------------------------------
-	oUF_Drak
-	oUF-based Combat HUD for PvE.
+	VisiHUD
+	High visibility combat HUD for World of Warcraft
 	Copyright (c) 2016 Drak <drak@derpydo.com>. All rights reserved.
-	https://github.com/Drak1814/oUF_Drak_Config
+	https://github.com/Drak1814/VisiHUD_Options
 ----------------------------------------------------------------------]]
 
 
 local _name, ns = ...
 local L = ns.L
 
-assert(oUFDrak, _name .. " was unable to locate oUF_Drak install.")
+assert(VisiHUD, _name .. " was unable to locate VisiHUD install.")
 
 -- import other ns and remove global
-setmetatable(ns, { __index = oUFDrak })
-oUFDrak = nil
+setmetatable(ns, { __index = VisiHUD })
+VisiHUD = nil
 
 -- map values to labels
 local outlineWeights = {
@@ -36,11 +36,11 @@ local powerColorModes = {
 --	Options panel
 ------------------------------------------------------------------------
 
-LibStub("DrakConfig-OptionsPanel"):New(oUFDrakOptions, nil, function(panel)
+LibStub("VisiHUD-OptionsPanel"):New(VisiHUDOptions, nil, function(panel)
 	
 	ns.debug(panel.name)
 	
-	local db = oUFDrakConfig
+	local db = VisiHUDConfig
 	local Media = LibStub("LibSharedMedia-3.0")
 
 	--------------------------------------------------------------------
@@ -50,7 +50,7 @@ LibStub("DrakConfig-OptionsPanel"):New(oUFDrakOptions, nil, function(panel)
 	
 	--------------------------------------------------------------------
 
-	local anchors = CreateFrame("Button", "oUFDrakMoveAnchors", panel, "UIPanelButtonTemplate")
+	local anchors = CreateFrame("Button", "VisiHUDMoveAnchors", panel, "UIPanelButtonTemplate")
 	anchors:SetPoint("TOPLEFT", notes, "TOPRIGHT", 12, 0)
 	anchors:SetSize(160, 22)
 	anchors:SetText("Toggle Anchors")
@@ -537,5 +537,5 @@ end)
 
 local LAP = LibStub("LibAboutPanel", true)
 if LAP then
-	LAP.new("oUF Drak", "oUF_Drak")
+	LAP.new("VisiHUD", "VisiHUD")
 end

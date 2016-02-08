@@ -1,12 +1,12 @@
 --[[--------------------------------------------------------------------
-	DrakConfig-OptionsPanel
+	VisiHUD-OptionsPanel
 	Simple options panel frame generator. Requires LibStub.
-	https://github.com/Drak1814/oUF_Drak_Config
+	https://github.com/Drak1814/VisiHUD_Options
 ----------------------------------------------------------------------]]
 
 local MINOR_VERSION = 20160202
 
-local lib, oldminor = LibStub:NewLibrary("DrakConfig-OptionsPanel", MINOR_VERSION)
+local lib, oldminor = LibStub:NewLibrary("VisiHUD-OptionsPanel", MINOR_VERSION)
 if not lib then return end
 
 lib.objects = lib.objects or {}
@@ -82,7 +82,7 @@ function lib:New(name, parent, construct, refresh)
 	if type(name) == "table" and name.IsObjectType and name:IsObjectType("Frame") then
 		frame = name
 	else
-		assert(type(name) == "string", "DrakConfig-OptionsPanel: Name is not a string!")
+		assert(type(name) == "string", "VisiHUD-OptionsPanel: Name is not a string!")
 		if type(parent) ~= "string" then parent = nil end
 		frame = CreateFrame("Frame", nil, InterfaceOptionsFramePanelContainer)
 		frame:Hide()
@@ -95,7 +95,7 @@ function lib:New(name, parent, construct, refresh)
 	if type(refresh) ~= "function" then refresh = nil end
 
 	for _, widget in pairs(widgetTypes) do
-		local lib = LibStub("DrakConfig-"..widget, true)
+		local lib = LibStub("VisiHUD-"..widget, true)
 		if lib then
 			local method = "Create"..widget
 			frame[method] = lib[method]

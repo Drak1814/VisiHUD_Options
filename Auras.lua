@@ -1,19 +1,19 @@
 --[[--------------------------------------------------------------------
-	oUF_Drak
-	oUF-based Combat HUD for PvE.
+	VisiHUD
+	High visibility combat HUD for World of Warcraft
 	Copyright (c) 2016 Drak <drak@derpydo.com>. All rights reserved.
-	https://github.com/Drak1814/oUF_Drak_Config
+	https://github.com/Drak1814/VisiHUD_Options
 ----------------------------------------------------------------------]]
 
 
 local _, ns = ...
 local L = ns.L
 
-LibStub("DrakConfig-OptionsPanel").CreateOptionsPanel(L.Auras, "oUF Drak", function(panel)
+LibStub("VisiHUD-OptionsPanel").CreateOptionsPanel(L.Auras, "VisiHUD", function(panel)
 	local title, notes = panel:CreateHeader(panel.name, L.Auras_Desc)
 	local showDefaults, showAllDefaults = {}
 
-	local scrollFrame = CreateFrame("ScrollFrame", "oUFPCAuraScrollFrame", panel, "UIPanelScrollFrameTemplate")
+	local scrollFrame = CreateFrame("ScrollFrame", "VisiHUDAuraScrollFrame", panel, "UIPanelScrollFrameTemplate")
 	scrollFrame:SetPoint("TOPLEFT", notes, "BOTTOMLEFT", 0, -16)
 	scrollFrame:SetPoint("BOTTOMRIGHT", -38, 16)
 	panel.ScrollFrame = scrollFrame
@@ -103,7 +103,7 @@ LibStub("DrakConfig-OptionsPanel").CreateOptionsPanel(L.Auras, "oUF Drak", funct
 
 		local name, _, icon = GetSpellInfo(id)
 		if name and icon then
-			if oUFDrakAuraConfig.customFilters[id] and oUFDrakAuraConfig.customFilters[id] ~= ns.defaultAuras[id] then
+			if VisiHUDAuraConfig.customFilters[id] and VisiHUDAuraConfig.customFilters[id] ~= ns.defaultAuras[id] then
 				dialog.Text:SetText(RED_FONT_COLOR_CODE .. L.AddAura_Duplicate .. "|r")
 				dialog.Button:Disable()
 			end
@@ -120,9 +120,9 @@ LibStub("DrakConfig-OptionsPanel").CreateOptionsPanel(L.Auras, "oUF Drak", funct
 		if id and id > 0 and GetSpellInfo(id) then
 			if ns.defaultAuras[id] then
 				showDefaults[id] = true
-			elseif not oUFDrakAuraConfig.customFilters[id] then
-				oUFDrakAuraConfig.customFilters[id] = ns.auraFilterValues.FILTER_ALL
-				oUFDrakAuraConfig.deleted[id] = nil
+			elseif not VisiHUDAuraConfig.customFilters[id] then
+				VisiHUDAuraConfig.customFilters[id] = ns.auraFilterValues.FILTER_ALL
+				VisiHUDAuraConfig.deleted[id] = nil
 			end
 			ns.UpdateAuraList()
 			panel.refresh()
@@ -130,7 +130,7 @@ LibStub("DrakConfig-OptionsPanel").CreateOptionsPanel(L.Auras, "oUF Drak", funct
 	end)
 	dialog.EditBox = dialogBox
 
-	local dialogButton = CreateFrame("Button", "oUFDrakAuraAddButton", dialog, "UIPanelButtonTemplate")
+	local dialogButton = CreateFrame("Button", "VisiHUDAuraAddButton", dialog, "UIPanelButtonTemplate")
 	dialogButton:SetPoint("LEFT", dialogBox, "RIGHT", 12, 0)
 	dialogButton:SetWidth(80)
 	dialogButton:SetText(OKAY)
@@ -159,7 +159,7 @@ LibStub("DrakConfig-OptionsPanel").CreateOptionsPanel(L.Auras, "oUF Drak", funct
 
 	--------------------------------------------------------------------
 
-	local add = CreateFrame("Button", "oUFDrakAuraPanelButton", panel, "UIPanelButtonTemplate")
+	local add = CreateFrame("Button", "VisiHUDAuraPanelButton", panel, "UIPanelButtonTemplate")
 	add:SetText("|TInterface\\LFGFRAME\\LFGROLE_BW:0:0:0:0:64:16:48:64:0:16:255:255:153|t " .. L.AddAura)
 	add:SetPoint("TOPRIGHT", title, "BOTTOMRIGHT", 0, -8)
 	add:SetSize(160, 32)
@@ -198,7 +198,7 @@ LibStub("DrakConfig-OptionsPanel").CreateOptionsPanel(L.Auras, "oUF Drak", funct
 	end
 	local function Row_OnLeave(self)
 		local color
-		if ns.defaultAuras[self.id] == ns.auraFilterValues.FILTER_DISABLE or oUFDrakAuraConfig.customFilters[self.id] == ns.auraFilterValues.FILTER_DISABLE then
+		if ns.defaultAuras[self.id] == ns.auraFilterValues.FILTER_DISABLE or VisiHUDAuraConfig.customFilters[self.id] == ns.auraFilterValues.FILTER_DISABLE then
 			color = GRAY_FONT_COLOR
 		else
 			color = NORMAL_FONT_COLOR
@@ -220,9 +220,9 @@ LibStub("DrakConfig-OptionsPanel").CreateOptionsPanel(L.Auras, "oUF Drak", funct
 			GameTooltip:Hide()
 		end
 		local id = self:GetParent().id
-		oUFDrakAuraConfig.customFilters[id] = nil
+		VisiHUDAuraConfig.customFilters[id] = nil
 		if ns.defaultAuras[id] then
-			oUFDrakAuraConfig.deleted[id] = true
+			VisiHUDAuraConfig.deleted[id] = true
 		end
 		panel.refresh()
 		ns.UpdateAuraList()
@@ -252,10 +252,10 @@ LibStub("DrakConfig-OptionsPanel").CreateOptionsPanel(L.Auras, "oUF Drak", funct
 		local id = self.owner.id
 		local isDefault = value == ns.defaultAuras[id]
 		if isDefault then
-			oUFDrakAuraConfig.customFilters[id] = nil
+			VisiHUDAuraConfig.customFilters[id] = nil
 			showDefaults[id] = true
 		else
-			oUFDrakAuraConfig.customFilters[id] = value
+			VisiHUDAuraConfig.customFilters[id] = value
 		end
 		ns.UpdateAuraList()
 	end
@@ -295,7 +295,7 @@ LibStub("DrakConfig-OptionsPanel").CreateOptionsPanel(L.Auras, "oUF Drak", funct
 		highlight:Hide()
 		row.highlight = highlight
 
-		local delete = CreateFrame("Button", "oUFPCAuraDelete"..i, row, "UIPanelCloseButton")
+		local delete = CreateFrame("Button", "VisiHUDAuraDelete"..i, row, "UIPanelCloseButton")
 		delete:SetPoint("LEFT", -2, -1)
 		delete:SetSize(32, 32)
 		delete:SetScript("OnClick", Delete_OnClick)
@@ -369,7 +369,7 @@ LibStub("DrakConfig-OptionsPanel").CreateOptionsPanel(L.Auras, "oUF Drak", funct
 			end
 		end
 
-		for id, filter in pairs(oUFDrakAuraConfig.customFilters) do
+		for id, filter in pairs(VisiHUDAuraConfig.customFilters) do
 			local name, _, icon = GetSpellInfo(id)
 			if name and icon and handleFilters[filter] then
 				local new, aura = true

@@ -1,15 +1,15 @@
 --[[--------------------------------------------------------------------
-	oUF_Drak
-	oUF-based Combat HUD for PvE.
+	VisiHUD
+	High visibility combat HUD for World of Warcraft
 	Copyright (c) 2016 Drak <drak@derpydo.com>. All rights reserved.
-	https://github.com/Drak1814/oUF_Drak_Config
+	https://github.com/Drak1814/VisiHUD_Options
 ----------------------------------------------------------------------]]
 
 
 local _, ns = ...
 local L = ns.L
 
-LibStub("DrakConfig-OptionsPanel").CreateOptionsPanel(L.Move, "oUF Drak", function(panel)
+LibStub("VisiHUD-OptionsPanel").CreateOptionsPanel(L.Move, "VisiHUD", function(panel)
 	local title, notes = panel:CreateHeader(panel.name, L.Move_Desc)
 	local showDefaults, showAllDefaults = {}
 

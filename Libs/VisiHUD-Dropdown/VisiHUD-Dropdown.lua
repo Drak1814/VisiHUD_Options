@@ -1,14 +1,14 @@
 --[[--------------------------------------------------------------------
-	DrakConfig-Dropdown
+	VisiHUD-Dropdown
 	Simple scrolling dropdown widget generator. Requires LibStub.
 	Based on tekKonfig-Dropdown by Tekkub and OmniCC_Options by Tuller.
-	https://github.com/Drak1814/oUF_Drak_Config
+	https://github.com/Drak1814/VisiHUD_Options
 
 ----------------------------------------------------------------------]]
 
 local MINOR_VERSION = 20160202
 
-local lib, oldminor = LibStub:NewLibrary("DrakConfig-Dropdown", MINOR_VERSION)
+local lib, oldminor = LibStub:NewLibrary("VisiHUD-Dropdown", MINOR_VERSION)
 if not lib then return end
 
 lib.listFrames = lib.listFrames or {}
@@ -243,7 +243,7 @@ function CreateList(dropdown) -- local
 
 	id = id + 1
 
-	local list = CreateFrame("Button", "DrakConfigDropdown" .. id, dropdown)
+	local list = CreateFrame("Button", "VisiHUDDropdown" .. id, dropdown)
 	list:SetToplevel(true)
 	list:Hide()
 
@@ -365,7 +365,7 @@ end
 ------------------------------------------------------------------------
 
 function lib:New(parent, name, tooltipText, items, keepShownOnClick)
-	assert(type(parent) == "table" and type(rawget(parent, 0)) == "userdata", "DrakConfig-Dropdown: parent must be a frame")
+	assert(type(parent) == "table" and type(rawget(parent, 0)) == "userdata", "VisiHUD-Dropdown: parent must be a frame")
 
 	local dropdown = CreateFrame("Frame", nil, parent)
 	dropdown:SetSize(186, 42)

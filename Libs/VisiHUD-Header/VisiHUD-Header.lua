@@ -1,16 +1,16 @@
 --[[--------------------------------------------------------------------
-	DrakConfig-Header
+	VisiHUD-Header
 	Simple options panel header generator. Requires LibStub.
-	https://github.com/Drak1814/oUF_Drak_Config
+	https://github.com/Drak1814/VisiHUD_Options
 ----------------------------------------------------------------------]]
 
 local MINOR_VERSION = 20160202
 
-local lib, oldminor = LibStub:NewLibrary("DrakConfig-Header", MINOR_VERSION)
+local lib, oldminor = LibStub:NewLibrary("VisiHUD-Header", MINOR_VERSION)
 if not lib then return end
 
 function lib:New(parent, titleText, notesText, noPrefix)
-	assert(type(parent) == "table" and type(rawget(parent, 0)) == "userdata", "DrakConfig-Header: parent must be a frame")
+	assert(type(parent) == "table" and type(rawget(parent, 0)) == "userdata", "VisiHUD-Header: parent must be a frame")
 	if type(titleText) ~= "string" then titleText = nil end
 	if type(notesText) ~= "string" then notesText = nil end
 

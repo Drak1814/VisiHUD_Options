@@ -1,8 +1,8 @@
 --[[--------------------------------------------------------------------
-	oUF_Drak
-	oUF-based Combat HUD for PvE.
+	VisiHUD
+	High visibility combat HUD for World of Warcraft
 	Copyright (c) 2016 Drak <drak@derpydo.com>. All rights reserved.
-	https://github.com/Drak1814/oUF_Drak_Config
+	https://github.com/Drak1814/VisiHUD_Options
 ----------------------------------------------------------------------]]
 
 local _name, ns = ...
@@ -31,9 +31,9 @@ local function GetUnitConfig(unit, key)
 	local value
 	local children = unitType[unit]
 	if type(children) == "table" then
-		value = oUFDrakUnitConfig[children[1]][key]
+		value = VisiHUDUnitConfig[children[1]][key]
 	else
-		value = oUFDrakUnitConfig[unit][key]
+		value = VisiHUDUnitConfig[unit][key]
 	end
 	--print("GetUnitConfig", unit, key, type(value), tostring(value))
 	return value
@@ -44,16 +44,16 @@ local function SetUnitConfig(unit, key, value)
 	local children = unitType[unit]
 	if type(children) == "table" then
 		for i = 1, #children do
-			oUFDrakUnitConfig[children[i]][key] = value
+			VisiHUDUnitConfig[children[i]][key] = value
 		end
 	else
-		oUFDrakUnitConfig[unit][key] = value
+		VisiHUDUnitConfig[unit][key] = value
 	end
 end
 
 ------------------------------------------------------------------------
 
-LibStub("DrakConfig-OptionsPanel"):New(L.UnitSettings, "oUF Drak", function(panel)
+LibStub("VisiHUD-OptionsPanel"):New(L.UnitSettings, "VisiHUD", function(panel)
 	local title, notes = panel:CreateHeader(panel.name, L.UnitSettings_Desc .. "\n" .. L.MoreSettings_Desc)
 
 	---------------------------------------------------------------------
@@ -177,7 +177,7 @@ LibStub("DrakConfig-OptionsPanel"):New(L.UnitSettings, "oUF Drak", function(pane
 		local runeBars = panel.CreateCheckbox(unitSettings, L.RuneBars, L.RuneBars_Desc)
 		runeBars:SetPoint("TOPLEFT", classHeader, "BOTTOMLEFT", 0, -12)
 		function runeBars:OnValueChanged(value)
-			oUFDrakConfig.runeBars = value
+			VisiHUDConfig.runeBars = value
 		end
 		runeBars.checkedKey = "runeBars"
 		tinsert(classFeatures, runeBars)
@@ -187,7 +187,7 @@ LibStub("DrakConfig-OptionsPanel"):New(L.UnitSettings, "oUF Drak", function(pane
 		local druidMana = panel.CreateCheckbox(unitSettings, L.DruidManaBar, L.DruidManaBar_Desc)
 		druidMana:SetPoint("TOPLEFT", classHeader, "BOTTOMLEFT", 0, -12)
 		function druidMana:OnValueChanged(value)
-			oUFDrakConfig.druidMana = value
+			VisiHUDConfig.druidMana = value
 		end
 		druidMana.checkedKey = "druidMana"
 		tinsert(classFeatures, druidMana)
@@ -195,7 +195,7 @@ LibStub("DrakConfig-OptionsPanel"):New(L.UnitSettings, "oUF Drak", function(pane
 		local eclipseBar = panel.CreateCheckbox(unitSettings, L.EclipseBar, L.EclipseBar_Desc)
 		eclipseBar:SetPoint("TOPLEFT", druidMana, "BOTTOMLEFT", 0, -12)
 		function eclipseBar:OnValueChanged(value)
-			oUFDrakConfig.eclipseBar = value
+			VisiHUDConfig.eclipseBar = value
 		end
 		eclipseBar.checkedKey = "eclipseBar"
 		tinsert(classFeatures, eclipseBar)
@@ -205,7 +205,7 @@ LibStub("DrakConfig-OptionsPanel"):New(L.UnitSettings, "oUF Drak", function(pane
 		local staggerBar = panel.CreateCheckbox(unitSettings, L.StaggerBar, L.StaggerBar_Desc)
 		staggerBar:SetPoint("TOPLEFT", classHeader, "BOTTOMLEFT", 0, -12)
 		function staggerBar:OnValueChanged(value)
-			oUFDrakConfig.staggerBar = value
+			VisiHUDConfig.staggerBar = value
 		end
 		staggerBar.checkedKey = "staggerBar"
 		tinsert(classFeatures, staggerBar)
@@ -215,7 +215,7 @@ LibStub("DrakConfig-OptionsPanel"):New(L.UnitSettings, "oUF Drak", function(pane
 		local totemBars = panel.CreateCheckbox(unitSettings, L.TotemBars, L.TotemBars_Desc)
 		totemBars:SetPoint("TOPLEFT", classHeader, "BOTTOMLEFT", 0, -12)
 		function totemBars:OnValueChanged(value)
-			oUFDrakConfig.totemBars = value
+			VisiHUDConfig.totemBars = value
 		end
 		totemBars.checkedKey = "totemBars"
 		tinsert(classFeatures, totemBars)
@@ -253,26 +253,26 @@ LibStub("DrakConfig-OptionsPanel"):New(L.UnitSettings, "oUF Drak", function(pane
 	frameWidth:SetPoint("TOPLEFT", globalTitle, "BOTTOMLEFT", -4, -16)
 	frameWidth:SetPoint("TOPRIGHT", globalTitle, "BOTTOM", -8, -16)
 	function frameWidth:OnValueChanged(value)
-		oUFDrakConfig.width = value
+		VisiHUDConfig.width = value
 	end
 
 	local frameHeight = panel.CreateSlider(globalSettings, L.FrameHeight, L.FrameHeight_Desc, 10, 60, 5)
 	frameHeight:SetPoint("TOPLEFT", frameWidth, "BOTTOMLEFT", 0, -24)
 	frameHeight:SetPoint("TOPRIGHT", frameWidth, "BOTTOMRIGHT", 0, -24)
 	function frameHeight:OnValueChanged(value)
-		oUFDrakConfig.height = value
+		VisiHUDConfig.height = value
 	end
 
 	local powerHeight = panel.CreateSlider(globalSettings, L.PowerHeight, L.PowerHeight_Desc, 0.1, 0.5, 0.05, true)
 	powerHeight:SetPoint("TOPLEFT", frameHeight, "BOTTOMLEFT", 0, -24)
 	powerHeight:SetPoint("TOPRIGHT", frameHeight, "BOTTOMRIGHT", 0, -24)
 	function powerHeight:OnValueChanged(value)
-		oUFDrakConfig.powerHeight = value
+		VisiHUDConfig.powerHeight = value
 	end
 
 	---------------------------------------------------------------------
 
-	local reload = CreateFrame("Button", "oUFDrakOptionsUnitsReloadButton", panel, "UIPanelButtonTemplate")
+	local reload = CreateFrame("Button", "VisiHUDOptionsUnitsReloadButton", panel, "UIPanelButtonTemplate")
 	reload:SetPoint("BOTTOMLEFT", 16, 16)
 	reload:SetSize(150, 22)
 	reload:SetText(L.ReloadUI)
@@ -315,9 +315,9 @@ LibStub("DrakConfig-OptionsPanel"):New(L.UnitSettings, "oUF Drak", function(pane
 			unitSettings:Hide()
 			globalSettings:Show()
 
-			frameWidth:SetValue(oUFDrakConfig.width)
-			frameHeight:SetValue(oUFDrakConfig.height)
-			powerHeight:SetValue(oUFDrakConfig.powerHeight)
+			frameWidth:SetValue(VisiHUDConfig.width)
+			frameHeight:SetValue(VisiHUDConfig.height)
+			powerHeight:SetValue(VisiHUDConfig.powerHeight)
 		else
 			globalSettings:Hide()
 			unitSettings:Show()
@@ -337,9 +337,9 @@ LibStub("DrakConfig-OptionsPanel"):New(L.UnitSettings, "oUF Drak", function(pane
 				for i = 1, #classFeatures do
 					local box = classFeatures[i]
 					box:Show()
-					box:SetChecked(oUFDrakConfig[box.checkedKey])
+					box:SetChecked(VisiHUDConfig[box.checkedKey])
 					if box.enabledKey then
-						box:SetEnabled(oUFDrakConfig[box.enabledKey])
+						box:SetEnabled(VisiHUDConfig[box.enabledKey])
 					end
 				end
 			else

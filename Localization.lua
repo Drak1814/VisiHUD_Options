@@ -1,8 +1,8 @@
 --[[--------------------------------------------------------------------
-	oUF_Drak
-	oUF-based Combat HUD for PvE.
+	VisiHUD
+	High visibility combat HUD for World of Warcraft
 	Copyright (c) 2016 Drak <drak@derpydo.com>. All rights reserved.
-	https://github.com/Drak1814/oUF_Drak_Config
+	https://github.com/Drak1814/VisiHUD_Options
 ----------------------------------------------------------------------]]
 
 local _, private = ...
@@ -45,7 +45,7 @@ L.EclipseBar_Desc = "Show an eclipse bar above the player frame."
 L.EclipseBarIcons = "Show eclipse bar icons"
 L.EclipseBarIcons_Desc = "Show animated moon and sun icons on either end of the eclipse bar."
 L.EnableUnit = "Enable"
-L.EnableUnit_Desc = "You can disable the oUF Drak frame for this unit if you prefer to use the frame provided by the default UI or another addon."
+L.EnableUnit_Desc = "You can disable the frame for this unit if you prefer."
 L.FilterDebuffHighlight = "Filter debuff highlight"
 L.FilterDebuffHighlight_Desc = "Highlight frame borders only for debuffs you can dispel."
 L.Font = "Font"
@@ -172,7 +172,7 @@ L.IgnoreOwnHeals_Desc = "Zeige nur eingehende Heilungen anderer Spieler."
 L.MoreSettings = "Weitere Einstellungen"
 L.MoreSettings_Desc = "Um die Änderungen dieser Einstellungen anzuwenden, muss das UI erneut geladen werden."
 L.None = "Nichts"
-L.Options_Desc = "oUF_Drak ist ein Layout für Haste's oUF Framework. Nutze diese Oberfläche um Grundeinstellungen zu konfigurieren."
+L.Options_Desc = "VisiHUD ist ein Layout für Haste's oUF Framework. Nutze diese Oberfläche um Grundeinstellungen zu konfigurieren."
 L.Outline = "Schriftumriss"
 L.Power = "Ressourcenbalken"
 L.Power_Desc = "Eine Ressourcenbalken auf diesem Einheitfenster anzeigen."
@@ -278,7 +278,7 @@ L.IgnoreOwnHeals_Desc = "Mostrar sólo las sanaciones en curso de lanzamiento po
 L.MoreSettings = "Otras opciones"
 L.MoreSettings_Desc = "Estas opciones no tendrán efecto hasta la próxima vez que te conectes o vuelvas a cargar la interfaz de usuario."
 L.None = "Ninguno"
-L.Options_Desc = "oUF_Drak es un diseño para oUF, por Haste. Estas opciones te permiten modificar la configuración de oUF_Drak."
+L.Options_Desc = "VisiHUD es un diseño para oUF, por Haste. Estas opciones te permiten modificar la configuración de VisiHUD."
 L.Outline = "Perfil de fuente"
 L.Power = "Barra de poder"
 L.Power_Desc = "Mostrar una barra de poder (maná, energia, etc.) en el marco de esta unidad."
@@ -356,7 +356,7 @@ L.IgnoreOwnHeals = "Ignorer propre soins"
 L.IgnoreOwnHeals_Desc = "Indique uniquement les soins incantés par les autres joueurs."
 L.MoreSettings_Desc = "Ces options ne prendront effet qu'après une reconnexion ou un rechargement d'interface."
 L.None = "Aucun"
-L.Options_Desc = "oUF_Drak est un layout pour oUF par Haste. Utilisez ce panneau pour configurer des options basiques de ce layout."
+L.Options_Desc = "VisiHUD est un layout pour oUF par Haste. Utilisez ce panneau pour configurer des options basiques de ce layout."
 L.Outline = "Contour de police"
 L.PowerBG = "Fond de barre de puissance"
 L.PowerBG_Desc = "Modifie la luminosité de la couleur de fond de la barre de puissance, relativement à la couleur d'avant-plan."
@@ -436,7 +436,7 @@ L.IgnoreOwnHeals_Desc = "Mostrar apenas cura lançado por outros jogadores."
 L.MoreSettings = "Mais Ajustes"
 L.MoreSettings_Desc = "Estas mudanças não terão efeito até a próxima vez que sua UI seja recarregada (/reload)."
 L.None = "Nenhum"
-L.Options_Desc = "oUF_Drak é um layout de quadros de unidade para dUF. Estas opções alterar algumas configurações básicas para os quadros."
+L.Options_Desc = "VisiHUD é um layout de quadros de unidade para dUF. Estas opções alterar algumas configurações básicas para os quadros."
 L.Outline = "Contorno do texto"
 L.Power = "Barra de poder"
 L.Power_Desc = "Mostrar uma barra de poder no quadro para esta unidade."
@@ -548,7 +548,7 @@ L.IgnoreOwnHeals = "忽略自身的治疗"
 L.IgnoreOwnHeals_Desc = "仅显示其他玩家施放的你所接受的治疗。"
 L.MoreSettings_Desc = "这个选项将在你重新登录或重载插件后生效。" -- NEEDS UPDATE
 L.None = "无"
-L.Options_Desc = "oUF_Drak是oUF头像的一款布局模块. 使用这个面板来做一些选项配置。"
+L.Options_Desc = "VisiHUD是oUF头像的一款布局模块. 使用这个面板来做一些选项配置。"
 L.Outline = "字体描边"
 L.PowerBG = "能力背景亮度"
 L.PowerBG_Desc = "修改能力条背景颜色的亮度, 相对于前景色。"

@@ -1,14 +1,14 @@
 --[[--------------------------------------------------------------------
-	DrakConfig-Checkbox
+	VisiHUD-Checkbox
 	Simple checkbox widget generator. Requires LibStub.
 	Originally based on tekKonfig-Checkbox by Tekkub.
-	https://github.com/Drak1814/oUF_Drak_Config
+	https://github.com/Drak1814/VisiHUD_Options
 
 ----------------------------------------------------------------------]]
 
 local MINOR_VERSION = 20160202
 
-local lib, oldminor = LibStub:NewLibrary("DrakConfig-Checkbox", MINOR_VERSION)
+local lib, oldminor = LibStub:NewLibrary("VisiHUD-Checkbox", MINOR_VERSION)
 if not lib then return end
 
 ------------------------------------------------------------------------
@@ -77,7 +77,7 @@ end
 ------------------------------------------------------------------------
 
 function lib:New(parent, text, tooltipText)
-	assert(type(parent) == "table" and type(rawget(parent, 0) == "userdata"), "DrakConfig-Checkbox: parent must be a frame")
+	assert(type(parent) == "table" and type(rawget(parent, 0) == "userdata"), "VisiHUD-Checkbox: parent must be a frame")
 	if type(name) ~= "string" then name = nil end
 	if type(tooltipText) ~= "string" then tooltipText = nil end
 

@@ -1,4 +1,4 @@
-# oUF_Drak_Config
-oUF_Drak Config Panel for World of Warcraft
+#VisiHUD_Options
+###Options panel for VisiHUD
 
-**Required:** oUF_Drak
+**Required:** VisiHUD

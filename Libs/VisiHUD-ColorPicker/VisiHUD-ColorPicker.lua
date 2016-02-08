@@ -1,14 +1,14 @@
 --[[--------------------------------------------------------------------
-	DrakConfig-ColorPicker
+	VisiHUD-ColorPicker
 	Simple color picker widget generator. Requires LibStub.
 	Based on OmniCC_Options by Tuller.
-	https://github.com/Drak1814/oUF_Drak_Config
+	https://github.com/Drak1814/VisiHUD_Options
 
 ----------------------------------------------------------------------]]
 
 local MINOR_VERSION = 20160202
 
-local lib, oldminor = LibStub:NewLibrary("DrakConfig-ColorPicker", MINOR_VERSION)
+local lib, oldminor = LibStub:NewLibrary("VisiHUD-ColorPicker", MINOR_VERSION)
 if not lib then return end
 
 ------------------------------------------------------------------------
@@ -86,7 +86,7 @@ end
 ------------------------------------------------------------------------
 
 function lib:New(parent, name, tooltipText, hasOpacity)
-	assert(type(parent) == "table" and parent.CreateFontString, "DrakConfig-ColorPicker: Parent is not a valid frame!")
+	assert(type(parent) == "table" and parent.CreateFontString, "VisiHUD-ColorPicker: Parent is not a valid frame!")
 	if type(name) ~= "string" then name = nil end
 	if type(tooltipText) ~= "string" then tooltipText = nil end
 
