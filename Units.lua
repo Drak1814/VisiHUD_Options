@@ -142,24 +142,28 @@ LibStub("VisiHUD-OptionsPanel"):New(L.UnitSettings, "VisiHUD", function(panel)
 	enable:SetPoint("TOPLEFT", unitTitle, "BOTTOMLEFT", 0, -12)
 	function enable:OnValueChanged(value)
 		SetUnitConfig(panel.selectedUnit, "disable", not value)
+		ns.reload = true
 	end
 
 	local power = panel.CreateCheckbox(unitSettings, L.Power, L.Power_Desc)
 	power:SetPoint("TOPLEFT", enable, "BOTTOMLEFT", 0, -12)
 	function power:OnValueChanged(value)
 		SetUnitConfig(panel.selectedUnit, "power", value)
+		ns.reload = true
 	end
 
 	local castbar = panel.CreateCheckbox(unitSettings, L.Castbar, L.Castbar_Desc)
 	castbar:SetPoint("TOPLEFT", power, "BOTTOMLEFT", 0, -12)
 	function castbar:OnValueChanged(value)
 		SetUnitConfig(panel.selectedUnit, "castbar", value)
+		ns.reload = true
 	end
 
 	local combatText = panel.CreateCheckbox(unitSettings, L.CombatText, L.CombatText_Desc)
 	combatText:SetPoint("TOPLEFT", castbar, "BOTTOMLEFT", 0, -12)
 	function combatText:OnValueChanged(value)
 		SetUnitConfig(panel.selectedUnit, "combatText", value)
+		ns.reload = true
 	end
 
 	local classHeader = unitSettings:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
@@ -178,6 +182,7 @@ LibStub("VisiHUD-OptionsPanel"):New(L.UnitSettings, "VisiHUD", function(panel)
 		runeBars:SetPoint("TOPLEFT", classHeader, "BOTTOMLEFT", 0, -12)
 		function runeBars:OnValueChanged(value)
 			VisiHUDConfig.runeBars = value
+			ns.reload = true
 		end
 		runeBars.checkedKey = "runeBars"
 		tinsert(classFeatures, runeBars)
@@ -188,6 +193,7 @@ LibStub("VisiHUD-OptionsPanel"):New(L.UnitSettings, "VisiHUD", function(panel)
 		druidMana:SetPoint("TOPLEFT", classHeader, "BOTTOMLEFT", 0, -12)
 		function druidMana:OnValueChanged(value)
 			VisiHUDConfig.druidMana = value
+			ns.reload = true
 		end
 		druidMana.checkedKey = "druidMana"
 		tinsert(classFeatures, druidMana)
@@ -196,6 +202,7 @@ LibStub("VisiHUD-OptionsPanel"):New(L.UnitSettings, "VisiHUD", function(panel)
 		eclipseBar:SetPoint("TOPLEFT", druidMana, "BOTTOMLEFT", 0, -12)
 		function eclipseBar:OnValueChanged(value)
 			VisiHUDConfig.eclipseBar = value
+			ns.reload = true
 		end
 		eclipseBar.checkedKey = "eclipseBar"
 		tinsert(classFeatures, eclipseBar)
@@ -206,6 +213,7 @@ LibStub("VisiHUD-OptionsPanel"):New(L.UnitSettings, "VisiHUD", function(panel)
 		staggerBar:SetPoint("TOPLEFT", classHeader, "BOTTOMLEFT", 0, -12)
 		function staggerBar:OnValueChanged(value)
 			VisiHUDConfig.staggerBar = value
+			ns.reload = true
 		end
 		staggerBar.checkedKey = "staggerBar"
 		tinsert(classFeatures, staggerBar)
@@ -216,6 +224,7 @@ LibStub("VisiHUD-OptionsPanel"):New(L.UnitSettings, "VisiHUD", function(panel)
 		totemBars:SetPoint("TOPLEFT", classHeader, "BOTTOMLEFT", 0, -12)
 		function totemBars:OnValueChanged(value)
 			VisiHUDConfig.totemBars = value
+			ns.reload = true
 		end
 		totemBars.checkedKey = "totemBars"
 		tinsert(classFeatures, totemBars)
@@ -229,6 +238,7 @@ LibStub("VisiHUD-OptionsPanel"):New(L.UnitSettings, "VisiHUD", function(panel)
 	width:SetPoint("TOPRIGHT", unitTitle, "BOTTOMRIGHT", 0, -16)
 	function width:OnValueChanged(value)
 		SetUnitConfig(panel.selectedUnit, "width", value)
+		ns.reload = true
 	end
 
 	local height = panel.CreateSlider(unitSettings, L.Height, L.Height_Desc, 0.25, 2, 0.05, true)
@@ -236,6 +246,7 @@ LibStub("VisiHUD-OptionsPanel"):New(L.UnitSettings, "VisiHUD", function(panel)
 	height:SetPoint("TOPRIGHT", width, "BOTTOMRIGHT", 0, -24)
 	function height:OnValueChanged(value)
 		SetUnitConfig(panel.selectedUnit, "height", value)
+		ns.reload = true
 	end
 
 	---------------------------------------------------------------------
@@ -249,18 +260,21 @@ LibStub("VisiHUD-OptionsPanel"):New(L.UnitSettings, "VisiHUD", function(panel)
 
 	local globalTitle = panel.CreateHeader(globalSettings, L.Unit_Global) -- TODO: localize
 
-	local frameWidth = panel.CreateSlider(globalSettings, L.FrameWidth, L.FrameWidth_Desc, 100, 400, 20)
+	local frameWidth = panel.CreateSlider(globalSettings, L.FrameWidth, L.FrameWidth_Desc, 100, 400, 10)
 	frameWidth:SetPoint("TOPLEFT", globalTitle, "BOTTOMLEFT", -4, -16)
 	frameWidth:SetPoint("TOPRIGHT", globalTitle, "BOTTOM", -8, -16)
 	function frameWidth:OnValueChanged(value)
 		VisiHUDConfig.width = value
+		ns.reload = true
 	end
 
-	local frameHeight = panel.CreateSlider(globalSettings, L.FrameHeight, L.FrameHeight_Desc, 10, 60, 5)
+	local frameHeight = panel.CreateSlider(globalSettings, L.FrameHeight, L.FrameHeight_Desc, 20, 50, 5)
 	frameHeight:SetPoint("TOPLEFT", frameWidth, "BOTTOMLEFT", 0, -24)
 	frameHeight:SetPoint("TOPRIGHT", frameWidth, "BOTTOMRIGHT", 0, -24)
 	function frameHeight:OnValueChanged(value)
 		VisiHUDConfig.height = value
+		VisiHUDConfig.fontScale = 1 + ((value - 30) / 50)
+		ns.reload = true
 	end
 
 	local powerHeight = panel.CreateSlider(globalSettings, L.PowerHeight, L.PowerHeight_Desc, 0.1, 0.5, 0.05, true)
@@ -268,10 +282,11 @@ LibStub("VisiHUD-OptionsPanel"):New(L.UnitSettings, "VisiHUD", function(panel)
 	powerHeight:SetPoint("TOPRIGHT", frameHeight, "BOTTOMRIGHT", 0, -24)
 	function powerHeight:OnValueChanged(value)
 		VisiHUDConfig.powerHeight = value
+		ns.reload = true
 	end
 
 	---------------------------------------------------------------------
-
+--[=[
 	local reload = CreateFrame("Button", "VisiHUDOptionsUnitsReloadButton", panel, "UIPanelButtonTemplate")
 	reload:SetPoint("BOTTOMLEFT", 16, 16)
 	reload:SetSize(150, 22)
@@ -281,9 +296,8 @@ LibStub("VisiHUD-OptionsPanel"):New(L.UnitSettings, "VisiHUD", function(panel)
 	reload:SetScript("OnEnter", function(self) self:Enable() end)
 	reload:SetScript("OnLeave", function(self) self:Disable() end)
 	reload:SetScript("OnClick", ReloadUI)
-
 	---------------------------------------------------------------------
-
+]=]
 	function panel:SetSelectedUnit(unit)
 		if not unit or (unit ~= "global" and not unitType[unit]) then
 			unit = "global"
@@ -324,7 +338,7 @@ LibStub("VisiHUD-OptionsPanel"):New(L.UnitSettings, "VisiHUD", function(panel)
 
 			unitTitle:SetText(unitLabel[unit])
 
-		   enable:SetValue(not GetUnitConfig(unit, "disable"))
+		    enable:SetValue(not GetUnitConfig(unit, "disable"))
 			power:SetValue(GetUnitConfig(unit, "power"))
 			castbar:SetValue(GetUnitConfig(unit, "castbar"))
 			combatText:SetValue(GetUnitConfig(unit, "combatText"))

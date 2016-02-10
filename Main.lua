@@ -32,6 +32,8 @@ local powerColorModes = {
 	CUSTOM = L.ColorCustom,
 }
 
+ns.reload = false
+
 ------------------------------------------------------------------------
 --	Options panel
 ------------------------------------------------------------------------
@@ -171,24 +173,35 @@ LibStub("VisiHUD-OptionsPanel"):New(VisiHUDOptions, nil, function(panel)
 		ns.SetAllFonts()
 	end
 	outline:SetPoint("TOPLEFT", font, "BOTTOMLEFT", 0, -12)
-	outline:SetPoint("TOPRIGHT", font, "BOTTOMRIGHT", 0, -12)
-
+	outline:SetPoint("TOPRIGHT", font, "BOTTOM", -6, -12)
 	
 	--------------------------------------------------------------------
 
 	local shadow = panel:CreateCheckbox(L.Shadow)
-	shadow:SetPoint("TOPLEFT", outline, "BOTTOMLEFT", 0, -12)
+	shadow:SetPoint("BOTTOMLEFT", outline, "BOTTOMRIGHT", 12, 0)
 
 	function shadow:OnValueChanged(value)
 		db.fontShadow = value
 		ns.SetAllFonts()
 	end
+	
+	--------------------------------------------------------------------
+	
+	local fontSize = panel:CreateSlider(L.FontSize, nil, .5, 1.5, .05, true)
+	fontSize:SetPoint("TOPLEFT", outline, "BOTTOMLEFT", 0, -12)
+	fontSize:SetPoint("TOPRIGHT", font, "BOTTOMRIGHT", -6, -24 - outline:GetHeight())
 
+	function fontSize:OnValueChanged(value)
+		db.fontScale = value
+		ns.SetAllFonts()
+		ns.reload = true
+	end
+	
 	--------------------------------------------------------------------
 
-	local borderSize = panel:CreateSlider(L.BorderSize, nil, 12, 24, 2)
-	borderSize:SetPoint("TOPLEFT", shadow, "BOTTOMLEFT", 0, -12)
-	borderSize:SetPoint("TOPRIGHT", outline, "BOTTOMRIGHT", 0, -24 - shadow:GetHeight())
+	local borderSize = panel:CreateSlider(L.BorderSize, nil, 10, 24, 2)
+	borderSize:SetPoint("TOPLEFT", fontSize, "BOTTOMLEFT", 0, -12)
+	borderSize:SetPoint("TOPRIGHT", fontSize, "BOTTOMRIGHT", 0, -12)
 
 	function borderSize:OnValueChanged(value)
 		db.borderSize = value
@@ -274,7 +287,8 @@ LibStub("VisiHUD-OptionsPanel"):New(VisiHUDOptions, nil, function(panel)
 	fastFocus:SetPoint("TOPLEFT", threatLevels, "BOTTOMLEFT", 0, -12)
 
 	function fastFocus:OnValueChanged(value)
-		db.fastfocus = value
+		db.fastFocus = value
+		ns.reload = true
 	end
 	
 	--------------------------------------------------------------------
@@ -283,7 +297,8 @@ LibStub("VisiHUD-OptionsPanel"):New(VisiHUDOptions, nil, function(panel)
 	expandZoom:SetPoint("TOPLEFT", fastFocus, "BOTTOMLEFT", 0, -12)
 
 	function expandZoom:OnValueChanged(value)
-		db.expandzoom = value
+		db.expandZoom = value
+		ns.reload = true
 	end	
 	
 	--------------------------------------------------------------------
@@ -492,12 +507,20 @@ LibStub("VisiHUD-OptionsPanel"):New(VisiHUDOptions, nil, function(panel)
 
 	--------------------------------------------------------------------
 
+	function panel.okay() 
+		if (ns.reload == true) then
+			StaticPopup_Show("VISIHUD_RELOADUIWARNING")
+			ns.reload = false
+		end
+	end
+
 	function panel.refresh()
 		statusbar:SetValue(db.statusbar)
 		statusbar.valueBG:SetTexture(Media:Fetch("statusbar", db.statusbar))
 
 		font:SetValue(db.font)
 		outline:SetValue(db.fontOutline, outlineWeights[db.fontOutline])
+		fontSize:SetValue(db.fontScale)
 		shadow:SetValue(db.fontShadow)
 
 		borderSize:SetValue(db.borderSize)
@@ -506,8 +529,8 @@ LibStub("VisiHUD-OptionsPanel"):New(VisiHUDOptions, nil, function(panel)
 		dispelFilter:SetChecked(db.dispelFilter)
 		healFilter:SetChecked(db.ignoreOwnHeals)
 		threatLevels:SetChecked(db.threatLevels)
-		fastFocus:SetChecked(db.fastfocus)
-		expandZoom:SetChecked(db.expandzoom)
+		fastFocus:SetChecked(db.fastFocus)
+		expandZoom:SetChecked(db.expandZoom)
 		
 		healthColorMode:SetValue(db.healthColorMode, healthColorModes[db.healthColorMode])
 		healthColor:SetValue(unpack(db.healthColor))
@@ -539,3 +562,14 @@ local LAP = LibStub("LibAboutPanel", true)
 if LAP then
 	LAP.new("VisiHUD", "VisiHUD")
 end
+
+_G.StaticPopupDialogs["VISIHUD_RELOADUIWARNING"] = {
+	text = L['ReloadUIWarning_Desc'],
+	button1 = ACCEPT,
+	button2 = CANCEL,
+	OnAccept = ReloadUI,
+	timeout = 0,
+	whileDead = true,
+	hideOnEscape = true,
+	preferredIndex = 3,
+}
