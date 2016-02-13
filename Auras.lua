@@ -9,6 +9,8 @@
 local _, ns = ...
 local L = ns.L
 
+do return end
+
 LibStub("VisiHUD-OptionsPanel").CreateOptionsPanel(L.Auras, "VisiHUD", function(panel)
 	local title, notes = panel:CreateHeader(panel.name, L.Auras_Desc)
 	local showDefaults, showAllDefaults = {}
