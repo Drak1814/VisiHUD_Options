@@ -126,7 +126,7 @@ LibStub("VisiHUD-OptionsPanel").CreateOptionsPanel(L.Auras, "VisiHUD", function(
 				VisiHUDAuraConfig.customFilters[id] = ns.auraFilterValues.FILTER_ALL
 				VisiHUDAuraConfig.deleted[id] = nil
 			end
-			ns.UpdateAuraList()
+			ns.UpdateAuraFilter()
 			panel.refresh()
 		end
 	end)
@@ -227,7 +227,7 @@ LibStub("VisiHUD-OptionsPanel").CreateOptionsPanel(L.Auras, "VisiHUD", function(
 			VisiHUDAuraConfig.deleted[id] = true
 		end
 		panel.refresh()
-		ns.UpdateAuraList()
+		ns.UpdateAuraFilter()
 	end
 	local function Delete_OnEnter(self)
 		GameTooltip:SetOwner(self, "ANCHOR_LEFT")
@@ -259,7 +259,7 @@ LibStub("VisiHUD-OptionsPanel").CreateOptionsPanel(L.Auras, "VisiHUD", function(
 		else
 			VisiHUDAuraConfig.customFilters[id] = value
 		end
-		ns.UpdateAuraList()
+		ns.UpdateAuraFilter()
 	end
 	local function Filter_OnEnter(self)
 		Row_OnEnter(self:GetParent())
